@@ -1,19 +1,17 @@
 # GIT
 
-**Flags**
+### Usage
+```bash
+git config --local  ...     # ./.git/config
+git config --global ...     # ~/.gitconfig
+git config --system ...     # /etc/gitconfig
+```
 
-<pre>
---local  : ./.git/config
---global : ~/.gitconfig
---system : /etc/gitconfig
-</pre>
+## [GITHUB.COM](https://github.com)
 
-## GITHUB.COM
-
-### Clone a repository from [github.com](https://github.com) trough a proxy:  
-* Set <var>http_proxy</var> and <var>https_proxy</var> environment variables.
-No <var>http.proxy<var>, <var>https.proxy<var>, <var>http.sslVerify<var>, <var>https.sslVerify<var> flags are required.
-* Set <var>http.proxy<var>, <var>https.proxy<var>, <var>http.sslVerify<var>, <var>https.sslVerify<var> flags. No <var>http_proxy<var> and <var>https_proxy<var> environment variables are required.
+### Clone a repository trough a proxy:  
+* Set `http_proxy` and `https_proxy` environment variables. No ~http.proxy~, ~https.proxy~, ~http.sslVerify~, ~https.sslVerify~ flags are required. Example: ```bash git clone https://github.com/jcrtexidor/scripts.git```
+* Set `http.proxy`, `https.proxy`, `http.sslVerify`, `https.sslVerify` flags. No ~http_proxy~ and ~https_proxy~ environment variables are required.
 
 ### Configure a repository from [github.com](https://github.com)
 ```bash
@@ -24,11 +22,8 @@ git config credential.helper 'cache --timeout=2592000'
 git config http.proxy 'http://127.0.0.1:3128'             # CNTLM
 git config https.proxy 'http://127.0.0.1:3128'
 ```
-
-
-
-<samp><var>.git/config</var>  
-...  
+#### .git/config
+```config  
 [user]  
 	name = José Carlos Rodríguez Texidor  
 	email = jcrtexidor@gmail.com  
@@ -38,7 +33,7 @@ git config https.proxy 'http://127.0.0.1:3128'
 	proxy = http://127.0.0.1:3128  
 [https]  
 	proxy = http://127.0.0.1:3128  
-</samp>
+```
 
 
 > GITHUB tiene como política no permitir la autenticación a través de HTTP usando la contraseña, sino a través de un TOKEN (40 caracteres).
@@ -104,8 +99,9 @@ to produce a file **.gitconfig**
 [credential]
 	helper = cache --timeout=2592000
 ```
-> Es recomendable que las configuraciones sean locales para que no ofusquen las configuraciones de otros repostorios a los que quisieramos conectarnos, por ejemplo https://gitlab.com o https://github.com. Para cualquier repositorio git siempre es requerido configurar un nombre de usuario y correo  electrónico, en el caso de la UCI no es necesario configurar un proxy para git ya que este es un servidor que pertenece a la red interna. https://gitlab.prod.uci.cu solo permite la autenticación por ldap (con el usuario y contraseña del dominio) como consecuencia no puede usarse ssh para realizar operaciones con los repositorios (entre ellas ~`git clone git@gitlab.prod.uci.cu:fortes/ak-mined-arch-test.git`~) debido a que ssh requiere credenciales propias de git (y estas credenciales no pueden ser establecidas en https://gitlab.prod.uci.cu). También es necesario omitir la verificación del certificado de seguridad ya que a pesar de establecer una conexión https el sitio no emite ningún certificado. Para que git guarde las credenciales en cache y no las requiera en cada operación debe confgurarse la variable `credential.helper`.
-Tener en cuenta que en https://gitlab.prod.uci.cu necesitan privilegios para crear proyectos incluso si son privados (al parecer este git es para proyectos de producción aprobados por la universidad). Como alternativa puede usarse ***https://codecomunidades.prod.uci.cu*** que tiene la misma configuración que https://gitlab.prod.uci.cu pero los usuarios no necesitan privilegios para crear sus proyectos.  
+
+> Es recomendable que las configuraciones sean locales para que no ofusquen las configuraciones de otros repostorios a los que quisieramos conectarnos, por ejemplo [gitlab.com](https://gitlab.com) o [github.com](https://github.com). Para cualquier repositorio git siempre es requerido configurar un nombre de usuario y correo  electrónico, en el caso de la UCI no es necesario configurar un proxy para git ya que este es un servidor que pertenece a la red interna. [gitlab.prod.uci.cu](https://gitlab.prod.uci.cu) solo permite la autenticación por ldap (con el usuario y contraseña del dominio) como consecuencia no puede usarse ssh para realizar operaciones con los repositorios (entre ellas ~`git clone git@gitlab.prod.uci.cu:fortes/ak-mined-arch-test.git`~) debido a que ssh requiere credenciales propias de git (y estas credenciales no pueden ser establecidas en [gitlab.prod.uci.cu](https://gitlab.prod.uci.cu)). También es necesario omitir la verificación del certificado de seguridad ya que a pesar de establecer una conexión https el sitio no emite ningún certificado. Para que git guarde las credenciales en cache y no las requiera en cada operación debe confgurarse la variable `credential.helper`.
+Tener en cuenta que en [gitlab.prod.uci.cu](https://gitlab.prod.uci.cu) necesitan privilegios para crear proyectos incluso si son privados (al parecer este git es para proyectos de producción aprobados por la universidad). Como alternativa puede usarse [codecomunidades.prod.uci.cu](https://codecomunidades.prod.uci.cu) que tiene la misma configuración que [gitlab.prod.uci.cu](https://gitlab.prod.uci.cu) pero los usuarios no necesitan privilegios para crear sus proyectos.  
 
 > Para trabajar remotamente desde la subred de residencia, clonar el proyecto en una computadora conectada a la red de producción, mantenerla encendida como servidor. Usar el módulo de **Visual Studio Code: Remote - SSH** .
 
@@ -116,7 +112,7 @@ Tener en cuenta que en https://gitlab.prod.uci.cu necesitan privilegios para cre
 > Unset `http_proxy` and `https_proxy` environment variables.
 No `http.proxy`, `https.proxy`, `http.sslVerify`, `https.sslVerify` flags are required.  
 
-##### Unset git variables
+##### unset git variables
 ```bash
 # by default --local is used
 git config unset http.proxy
