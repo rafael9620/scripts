@@ -1,6 +1,19 @@
 # GIT
 
+**Flags**
+
+<pre>
+<var>--local</var>  : <var>./.git/config<var>  
+--global : ~/.gitconfig  
+--system : /etc/gitconfig
+</pre>
+
 ### GITHUB.COM
+
+Clone a repository from https://github.com trough a proxy:  
+* Set `http_proxy` and `https_proxy` environment variables.
+No `http.proxy`, `https.proxy`, `http.sslVerify`, `https.sslVerify` flags are required.
+* Set `http.proxy`, `https.proxy`, `http.sslVerify`, `https.sslVerify` flags. No `http_proxy` and `https_proxy` environment variables are required.
 
 ```bash
 git config user.name 'José Carlos Rodríguez Texidor'
@@ -10,6 +23,22 @@ git config credential.helper 'cache --timeout=2592000'
 git config http.proxy 'http://127.0.0.1:3128'             # CNTLM
 git config https.proxy 'http://127.0.0.1:3128'
 ```
+
+
+
+<samp><var>.git/config</var>  
+...  
+[user]  
+	name = José Carlos Rodríguez Texidor  
+	email = jcrtexidor@gmail.com  
+[credential]  
+	helper = cache --timeout=2592000  
+[http]  
+	proxy = http://127.0.0.1:3128  
+[https]  
+	proxy = http://127.0.0.1:3128  
+</samp>
+
 
 > GITHUB tiene como política no permitir la autenticación a través de HTTP usando la contraseña, sino a través de un TOKEN (40 caracteres).
 >
@@ -75,23 +104,17 @@ to produce a file **.gitconfig**
 	helper = cache --timeout=2592000
 ```
 > Es recomendable que las configuraciones sean locales para que no ofusquen las configuraciones de otros repostorios a los que quisieramos conectarnos, por ejemplo https://gitlab.com o https://github.com. Para cualquier repositorio git siempre es requerido configurar un nombre de usuario y correo  electrónico, en el caso de la UCI no es necesario configurar un proxy para git ya que este es un servidor que pertenece a la red interna. https://gitlab.prod.uci.cu solo permite la autenticación por ldap (con el usuario y contraseña del dominio) como consecuencia no puede usarse ssh para realizar operaciones con los repositorios (entre ellas ~`git clone git@gitlab.prod.uci.cu:fortes/ak-mined-arch-test.git`~) debido a que ssh requiere credenciales propias de git (y estas credenciales no pueden ser establecidas en https://gitlab.prod.uci.cu). También es necesario omitir la verificación del certificado de seguridad ya que a pesar de establecer una conexión https el sitio no emite ningún certificado. Para que git guarde las credenciales en cache y no las requiera en cada operación debe confgurarse la variable `credential.helper`.
-Tener en cuenta que https://gitlab.prod.uci.cu ha boqueado la subred de residencia `10.8.0.0/16` por lo que no se puede hacer `git clone ...` de ningún reporsitorio. Además se necesitan privilegios para crear proyectos incluso si son privados (al parecer este git es para proyectos de producción aprobados por la universidad). Como alternativa puede usarse ***https://codecomunidades.prod.uci.cu*** que tiene la misma configuración que https://gitlab.prod.uci.cu pero no ha bloqueado la subred de residencia y los usuarios no necesitan privilegios para crear sus proyectos.  
-Para trabajar remotamente desde la subred de residencia, clonar el proyecto en una computadora conectada a la red de producción, mantenerla encendida como servidor. Usar el módulo de **Visual Studio Code: Remote - SSH** .
+Tener en cuenta que en https://gitlab.prod.uci.cu necesitan privilegios para crear proyectos incluso si son privados (al parecer este git es para proyectos de producción aprobados por la universidad). Como alternativa puede usarse ***https://codecomunidades.prod.uci.cu*** que tiene la misma configuración que https://gitlab.prod.uci.cu pero los usuarios no necesitan privilegios para crear sus proyectos.  
 
----
-> ###### Connect https://github.com trough a proxy:
-> Set `http_proxy` and `https_proxy` environment variables.
-No `http.proxy`, `https.proxy`, `http.sslVerify`, `https.sslVerify` flags are required.  
-> Or  
-> Set `http.proxy`, `https.proxy`, `http.sslVerify`, `https.sslVerify` flags. No `http_proxy` and `https_proxy` environment variables are required.
+> Para trabajar remotamente desde la subred de residencia, clonar el proyecto en una computadora conectada a la red de producción, mantenerla encendida como servidor. Usar el módulo de **Visual Studio Code: Remote - SSH** .
 
-> ###### Connect https://gitlab.prod.uci.cu trough a proxy:
+
+
+
+> ###### Clone a repository from https://gitlab.prod.uci.cu trough a proxy:
 > Unset `http_proxy` and `https_proxy` environment variables.
 No `http.proxy`, `https.proxy`, `http.sslVerify`, `https.sslVerify` flags are required.  
-> Or  
-> Set `http.proxy`, `https.proxy`, `http.sslVerify`, `https.sslVerify` flags. No `http_proxy` and `https_proxy` environment variables are required.
 
----
 ##### Unset git variables
 ```bash
 # by default --local is used
