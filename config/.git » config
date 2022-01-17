@@ -1,0 +1,20 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[user]
+	name = José Carlos Rodríguez Texidor
+	email = jcrtexidor@gmail.com
+[remote "origin"]
+	url = https://github.com/jcrtexidor/stuff.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[credential]
+	helper = cache --timeout=2592000
+[http]
+	proxy = http://127.0.0.1:3128
+[https]
+	proxy = http://127.0.0.1:3128
