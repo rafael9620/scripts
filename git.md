@@ -3,18 +3,19 @@
 **Flags**
 
 <pre>
-<var>--local</var>  : <var>./.git/config<var>  
---global : ~/.gitconfig  
+--local  : ./.git/config
+--global : ~/.gitconfig
 --system : /etc/gitconfig
 </pre>
 
-### GITHUB.COM
+## GITHUB.COM
 
-Clone a repository from https://github.com trough a proxy:  
-* Set `http_proxy` and `https_proxy` environment variables.
-No `http.proxy`, `https.proxy`, `http.sslVerify`, `https.sslVerify` flags are required.
-* Set `http.proxy`, `https.proxy`, `http.sslVerify`, `https.sslVerify` flags. No `http_proxy` and `https_proxy` environment variables are required.
+### Clone a repository from [github.com](https://github.com) trough a proxy:  
+* Set <var>http_proxy</var> and <var>https_proxy</var> environment variables.
+No <var>http.proxy<var>, <var>https.proxy<var>, <var>http.sslVerify<var>, <var>https.sslVerify<var> flags are required.
+* Set <var>http.proxy<var>, <var>https.proxy<var>, <var>http.sslVerify<var>, <var>https.sslVerify<var> flags. No <var>http_proxy<var> and <var>https_proxy<var> environment variables are required.
 
+### Configure a repository from [github.com](https://github.com)
 ```bash
 git config user.name 'José Carlos Rodríguez Texidor'
 git config user.email 'jcrtexidor@gmail.com'
