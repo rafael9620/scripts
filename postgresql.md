@@ -5,6 +5,15 @@
 sudo apt-get install postgresql
 ```
 
+### Acceder a RELP de PostgreSQL luego de instalado
+```bash
+# Must be executed one by one
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres'"
+sudo su
+su postgres
+psql
+```
+
 ##### Configurar el usuario por defecto de postgresql
 ```bash
 sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres'"
