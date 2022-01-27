@@ -1,3 +1,6 @@
+VNC
+
+```bash
 export DISPLAY=:0
 gsettings set org.gnome.Vino enabled true
 gsettings set org.gnome.Vino prompt-enabled false
@@ -14,3 +17,4 @@ gsettings set org.gnome.desktop.lockdown disable-log-out true
 gsettings set org.gnome.desktop.interface enable-animations false
 
 /usr/lib/vino/vino-server
+```
