@@ -8,7 +8,7 @@ unset http_proxy https_proxy ftp_proxy all_proxy no_proxy HTTP_PROXY HTTPS_PROXY
 
 ```bash
 proxy='http://127.0.0.1:3128'
-noProxy='.uci.cu,.ude.cu,10.36.32.218,10.8.120.202'
+noProxy='.uci.cu,.edu.cu,10.36.32.218,10.8.120.202,'
 
 export http_proxy=$proxy          # http://user:password@10.0.0.1:8080
 export https_proxy=$http_proxy

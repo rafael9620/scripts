@@ -24,7 +24,7 @@
 ```bash
 npm config set editor=nano
 npm config set strict-ssl=false
-npm config set noproxy=nexus.prod.uci.cu,nexus.uclv.edu.cu
+npm config set noproxy=uci.cu,edu.cu
 npm config set registry=http://nexus.prod.uci.cu/repository/npm-all
 
 proxy=http://localhost:3128 # For CNTLM
@@ -37,7 +37,7 @@ npm config set https-proxy=$proxy
 ```bash
 npm config set editor=nano
 npm config set strict-ssl=false
-npm config set noproxy=nexus.prod.uci.cu,nexus.uclv.edu.cu
+npm config set noproxy=uci.cu,.edu.cu
 npm config set registry=http://nexus.uclv.edu.cu/repository/npm
 
 proxy=http://localhost:3128 # For CNTLM
