@@ -93,3 +93,34 @@ git add '*'                   && \
 git commit -m "Up"            && \
 git push origin 222:222
 ```
+
+
+```bash
+nvm use 14
+npm i -g @angular/cli@12
+ng new helloWorld
+cd helloWorld/
+
+# packages that support schematic
+ng add @angular/cdk @ng-bootstrap/ng-bootstrap ng-zorro-antd
+
+# packages that do not support schematic
+npm i @asymmetrik/ngx-leaflet @ngx-translate/core @ngx-translate/http-loader @sentry/browser @swimlane/ngx-charts chart.js font-awesome hammerjs jwt-decode leaflet leaflet-extra-markers leaflet-legend leaflet-navbar leaflet.fullscreen leaflet.markercluster ngx-color-picker ngx-mask ngx-permissions
+
+# An unhandled exception occurred: Package subpath './package.json' is not defined by "exports" in /home/jc/Desktop/helloWorld/node_modules/d3-.../package.json
+npm i d3 d3-array d3-brush d3-color d3-force d3-format d3-hierarchy d3-interpolate d3-scale d3-selection d3-shape d3-time-format
+
+npm i -D @angular/language-service @types/jasminewd2 @typescript-eslint/eslint-plugin @typescript-eslint/parser codelyzer eslint jasmine-spec-reporter protractor
+# No instalados en devDependencies: karma-coverage-istanbul-reporter ts-node tslint
+
+# "ng4-loading-spinner": "^1.0.27", requiere de @angular/core@^6, este paquete se ha quedado muy desactualizado
+# Ha sido reeplazado por ngx-spinner
+
+npm i ngx-spinner
+
+ng add @angular-eslint/schematics
+
+eslint --fix --fix-type layout,suggestion,problem src/app/
+
+prettier --config .prettierrc 'src/**/*.ts' --write
+```
