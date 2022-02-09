@@ -165,6 +165,11 @@ export ALL_PROXY=$all_proxy
 export NO_PROXY=$no_proxy
 
 ############################################################################################################################################
+export PIP_INDEX=http://nexus.prod.uci.cu/repository/pypi-all/pypi
+export PIP_INDEX_URL=http://nexus.prod.uci.cu/repository/pypi-all/simple
+export PIP_TRUSTED_HOST=nexus.prod.uci.cu
+export PIP_TIMEOUT=120
+############################################################################################################################################
 
 export alias chromium="/snap/bin/chromium \
 --proxy-server='https=$http_proxy;http=$http_proxy' \

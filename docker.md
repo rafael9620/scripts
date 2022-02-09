@@ -12,7 +12,7 @@ __install_docker() {
 ```
 
 ```bash
-__delete_docker() {
+__delete_docker() {  
   # Delete Docker
   sudo rm -rf /var/lib/docker
   sudo apt-get purge docker-ce docker-ce-cli containerd.io

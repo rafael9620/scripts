@@ -37,11 +37,16 @@ deb http://security.ubuntu.com/ubuntu focal-security universe
 ---
 ###### Update from internet trhough a proxy.
 ```bash
-http_proxy="http://localhost:3128" sudo apt-get update
+sudo http_proxy="http://localhost:3128/" no_proxy=".uci.cu,edu.cu" apt-get update
 ```
 
 ```bash
 echo 'Acquire::http::Proxy "http://127.0.0.1:3128"' | \
 tee -a /etc/apt/apt.conf                            & \
 sudo apt-get update
+```
+
+###### Update only one application
+```bash
+sudo apt --only-upgrade install firefox
 ```
