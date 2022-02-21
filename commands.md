@@ -305,6 +305,10 @@ exiftool -struct -g -json $PDF   # Return a json structured by groups of $PDF me
 exiftool -listg0                 # List the first family of groups
 exiftool -listw -PDF:ALL         # List all writtable tags for PDF group.
 
+
+exiftool -listf # List all supported file extensions
+
+
 ############################################################################################################################################
 PDF=/home/jc/Books/input.pdf
 
