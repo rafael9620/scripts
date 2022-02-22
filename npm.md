@@ -72,6 +72,7 @@ npm config set registry=https://registry.npmjs.org/
 npm install --global @angular/cli
 npm install --global @nestjs/cli
 npm install --global @ionic/cli
+npm install --global typeorm
 ```
 ```bash
 npm install --global typescript
