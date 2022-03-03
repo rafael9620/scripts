@@ -1,0 +1,234 @@
+MongoDB Cheat Sheet By Web Dev Simplified https://courses.webdevsimplified.com
+
+<h1>Terminology</h1>
+
+### Database
+A container for collections. This is the same as a database in SQL and
+usually each project will have its own database full of different collections.
+Collection A grouping of documents inside of a database. This is the same as a table in
+SQL and usually each type of data (users, posts, products) will have its own
+collection.
+
+Document
+A record inside of a collection. This is the same as a row in SQL and usually
+there will be one document per object in the collection. A document is also
+essentially just a JSON object.
+
+Field
+A key value pair within a document. This is the same as a column in SQL.
+Each document will have some number of fields that contain information
+such as name, address, hobbies, etc. An important difference between SQL
+and MongoDB is that a field can contain values such as JSON objects, and
+arrays instead of just strings, number, booleans, etc.
+Basic Commands
+mongosh Open a connection to your local MongoDB instance. All other commands
+will be run within this mongosh connection.
+show dbs Show all databases in the current MongoDB instance
+use <dbname> Switch to the database provided by dbname
+use myDatabase Switch to myDatabase
+db Show current database name
+cls Clear the terminal screen
+show collec ti ons Show all collections in the current database
+`db.dropDatabase()` Delete the current database
+e xit E x it the mongosh sessionCreate
+Each of these commands is run on a specific collection
+db.<collectionName>.<command>
+insertOne
+Create a new document inside the specified collection
+Add a new document with the name of Kyle into the users collection
+db.users.insertOne({ name: “Kyle” })
+insertMany
+Create multi new documents inside a specific collection
+db.users.insertMany([{ age: 26 }, { age: 20 }])
+Add two new documents with the age of 26 and 20 into the users collection
+Read
+Each of these commands is run on a specific collection
+db.<collectionName>.<command>
+find
+Get all documents
+Get all users
+db.users.find()
+find(<filterObject>)
+Find
+db.users.find({ name: “Kyle” })
+db.users.find({ “address.street”: “123 Main St” })
+find(<filterObject> , <selectObject>)
+db.users.find({ name: “Kyle” }, { name: 1, age: 1 })
+db.users.find({}, { age: 0 })
+all documents that match the filter o bj ect
+Get all users with the name Kyle
+Get all users whose adress field has a street field with the
+F ind
+v alue 1 2 3 M ain S t
+all documents that match the filter o bj ect
+b ut
+only
+return the field specified in the select o bj ect
+Get all users with the name Kyle b ut only return their name , age , and
+Get all users and return all columns e x cept for age
+findOne T he
+same as find ,
+b ut
+db.users.findOne({ name: “Kyle” }) Get the first user with the name Kyle
+c ou nt Do c um ents R eturn
+db.users. co unt Doc uments({ name: “Kyle” }) Get the num b er of users with the name Kyle
+_ id
+only return the first document that
+matches the filter o bj ect
+the count of the documents that match the filter
+o bj ect passed to it
+U pdate
+Each of these commands is run on a specific collection
+db.<collectionName>.<command>
+U pdate the first document that matches the filter o
+bj ect
+up dateOne
+db.users.u p dateOne({ age: 20 }, {
+with the data passed into the second parameter which is the
+$ set:
+{ age: 21 } })
+U pdate the first user with an age of 20 to the age of 2
+1
+U pdate all documents that matches the filter o
+bj ect
+up dateMany
+db.users.u p dateMany({ age: 12 }, {
+update o bj ect
+with the
+data passed into the second parameter which is the update
+$ in c :
+{ age: 3 } })
+o bj ect
+U pdate all users with an age of
+R eplace
+re p laceOne
+db.users.re p la c eOne({ age: 12 }, { age: 13 })
+1 2 b y
+adding
+3
+to their age
+the first document that matches the filter o bj ect
+.
+with the e x act o bj ect passed as the second parameter
+T his
+will completely o v erwrite the entire o bj ect and not j ust
+.
+update indi v idual fields
+R eplace
+the first user with an age of 1 2 with an o bj ect that has the age of
+its only field
+13
+asDelete
+Each of these commands is run on a specific collection
+db.<collectionName>.<command>
+deleteOne Delete the first document that matches the filter object
+deleteMany Delete all documents that matches the filter object
+db.users.deleteOne({ age: 20 })
+db.users.deleteMany({ age: 12 })
+Delete the first user with an age of 20
+Delete all users with an age of 12
+Complex Filter Object
+Any combination of the below can be use inside a filter object to make complex queries
+$eq Check for equality
+$ne Check for not equal
+$ g t / $ g te Check for greater than and greater than or equal to
+$lt / $lte Check for less than and less than or equal to
+$ i n Check if a v alue is one of many v alues
+$n i n Check if a v alue is none of many v alues
+$and Check that multi p le conditions are all true
+$ or Check that one of multi p le conditions is true
+$n o t N egate the filter inside of $ not
+$e x i s t s Check if a field e x ists
+$e x p r Do com p arisons between di ff erent fields
+db.users.find({ name: { $eq: “Kyle” } })
+db.users.find({ name: { $ne: “Kyle” } })
+db.users.find({ age: { $gt: 12 } })
+db.users.find({ age: { $gte: 1 5 } })
+db.users.find({ age: { $lt: 12 } })
+db.users.find({ age: { $lte: 1 5 } })
+db.users.find({ name: { $in: [ “Kyle” , “Mi k e” ] } })
+db.users.find({ name: { $nin: [ “Kyle” , “Mi k e” ] } })
+db.users.find({ $and: [ { age: 12 } , { name: “Kyle” } ] })
+db.users.find({ age: 12 , name: “Kyle” })
+db.users.find({ $ o r: [ { age: 12 } , { name: “Kyle” } ] })
+db.users.find({ name: { $n o t: { $eq: “Kyle” } } })
+db.users.find({ name: { $e x ists: true } })
+db.users.find({ $e x p r: { $gt: [ “$balan c e” , “$debt” ] } })
+Get all users with the name Kyle
+Get all users with a name other than Kyle
+Get all users with an age greater than 12
+Get all users with an age greater than or equal to 1 5
+Get all users with an age less than 12
+Get all users with an age less than or equal to 1 5
+Get all users with a name of Kyle or M ike
+Get all users that do not ha v e the name Kyle or M ike
+Get all users that ha v e an age of 12 and the name Kyle
+T his is an alternati v e way to do the same thing . Generally you do not need $ and .
+Get all users with a name of Kyle or an age of 12
+Get all users with a name other than Kyle
+Get all users that ha v e a name field
+Get all users that ha v e a balance that is greater than their debtComplex Update Object
+Any combination of the below can be use inside an update object to make complex updates
+Update only the fields passed to $set. This will not affect
+$set
+any fields not passed to $set.
+db.users.updateOne({ age: 12 }, { $set: { name: “Hi” } }) Update the name of the first user with the age of 12 to the value Hi
+$inc Increment the value of the field by the amount given
+db.users.updateOne({ age: 12 }, { $inc: { age: 2 } })
+$rename
+Rename a field
+db.users.updateMany({}, { $rename: { age: “years” } })
+$unset
+Rename the field age to years for all users
+Remove a field
+db.users.updateOne({ age: 12 }, { $unset: { age: “” } })
+$push
+Remove the age field from the first user with an age of 12
+Add a value to an array field
+db.users.updateMany({}, { $pus
+$pu
+Add 2 to the age of the first user with the age of 12
+ll
+h :
+{
+f riends:
+“
+Joh n”
+} })
+Add
+J ohn to the friends array for all users
+Remove a value from an array field
+db.users.updateMany({}, { $pu
+ll :
+{
+f riends:
+“Mi
+k e”
+} })
+Remove
+R ead M odi fi e r s
+Any combination of the below can be added to the end of any
+o
+l imit
+db.users.
+k
+f ind().s o rt({
+name: 1, age:
+- 1
+G et all users sorted by name in alphabetical order and then if any names are the
+})
+same sort by age in reverse order
+O nly return a set number of documents
+f ind(). l imit(2)
+O nly return the first 2 users
+Sk ip a set number of documents from the beginning
+s ip
+db.users.
+r ead ope r ation
+S ort the results of a find by the given fields
+s rt
+db.users.
+M i k e from the friends array for all users
+f ind().s k ip( 4 )
+Sk ip the first 4 users when returning results. This is great for pagination when
+combined with limit.

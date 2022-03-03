@@ -4,7 +4,7 @@
 ```bash
 # npm config set https-proxy http://<username>:<password>@<the.proxy.hostname>:<port>
 # npm config set proxy http://<username>:<password>@<the.proxy.hostname>:<port>
-# npm config set no-proxy localhost,127.0.0.1,example.org`
+# npm config set noproxy localhost,127.0.0.1,example.org`
 ```
 
 ```bash

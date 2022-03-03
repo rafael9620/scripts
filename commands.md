@@ -303,12 +303,16 @@ exiftool -all= $PDF              # Limpia todos los metadatos del archivo.
 
 exiftool -struct -g -json $PDF   # Return a json structured by groups of $PDF metadata.
 exiftool -listg0                 # List the first family of groups
+exiftool -listw                  # List all writtable tags.
 exiftool -listw -PDF:ALL         # List all writtable tags for PDF group.
+exiftool -listf                  # List all supported file extensions
+exiftool -listwf                 # List all writable file extensions.
+exiftool -listd                  # List all deletable groups.
+exiftool -listx                  # List an XML database of tag details
 
-
-exiftool -listf # List all supported file extensions
-
-
+EXAMPLES:
+exiftool -list -PDF:All -s
+exiftool -listx -PDF:All -s
 ############################################################################################################################################
 PDF=/home/jc/Books/input.pdf
 
