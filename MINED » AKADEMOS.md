@@ -65,6 +65,13 @@ cd ~/Projects/Akademos/MINED/ak-mined-arch-test/client && \
 ### PostgreSQL
 
 ```bash
+PGPASSWORD=postgres psql -h localhost -U postgres -c "DROP DATABASE arch_test;"
+PGPASSWORD=postgres psql -h localhost -U postgres -c "CREATE DATABASE arch_test;"
+PGPASSWORD=postgres psql -h localhost -U postgres arch_test < ~/Downloads/default-ak-c
+```
+or
+```bash
+export PGPASSWORD=postgres
 psql -h localhost -U postgres -c "DROP DATABASE arch_test;"
 psql -h localhost -U postgres -c "CREATE DATABASE arch_test;"
 psql -h localhost -U postgres arch_test < ~/Downloads/default-ak-c

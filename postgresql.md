@@ -1,17 +1,37 @@
 # PostgreSQL
 
-##### Instalar PostgreSQL
+##### Install PostgreSQL
 ```bash
-sudo apt-get install postgresql
+# Install PostgreSQL
+sudo apt-get install postgresql    
+
+# Set the default user password                                 
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres'"  
 ```
 
-### Acceder a RELP de PostgreSQL luego de instalado
+##### Access the PostgreSQL RELP
+Login as sudo then login as PostgreSQL default user the access the RELP in multiple steps.
 ```bash
 # Must be executed one by one
-sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres'"
-sudo su
+sudo su       # then introduce root password
 su postgres
 psql
+```
+Login as sudo then login as PostgreSQL default user the access the RELP i one line.
+```bash
+sudo -u postgres psql
+```
+
+```bash
+# host, port, user and password are required.
+# psql "host=<server> port=5432 dbname=<db> user=<user> password=<password>"
+psql "host=localhost port=5432 user=postgres password=postgres"
+
+
+# psql postgresql://[user[:password]@][host][:port][,...][/dbname][?param1=value1&...]
+psql postgresql://postgres:postgres@localhost:5432
+
+PGPASSWORD=postgres psql -h localhost -U postgres
 ```
 
 ##### Configurar el usuario por defecto de postgresql
@@ -25,7 +45,8 @@ sudo -u postgres psql -c "COMMENT ON ROLE postgres IS 'PostgreSQL default user.'
 sudo -u postgres createuser -s $USER
 ```
 
-##### o alternativamente
+ o alternativamente
+
 ```bash
 sudo -u postgres psql -c "CREATE USER $USER CREATEDB"
 sudo -u postgres psql -c "COMMENT ON ROLE $USER IS 'Desktop user.'"
