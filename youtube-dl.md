@@ -7,6 +7,10 @@ pip install -U youtube-dl
 url="https://www.youtube.com/watch?v=tRDaDZPYcIE"
 
 ~/.local/bin/youtube-dl $url --proxy socks5://127.0.0.1:8010 --write-auto-sub --sub-lang en --no-overwrites --continue --no-playlist --skip-download
+
+
+# MUSIC
+~/.local/bin/youtube-dl $url --proxy socks5://127.0.0.1:8010 --format m4a --no-overwrites --continue
 ```
 
 `--proxy URL`  Use the specified HTTP/HTTPS/SOCKS proxy.  To enable SOCKS proxy, specify a proper scheme.  For example socks5://127.0.0.1:1080/.  Pass in an empty string (--proxy "") for direct connection.
