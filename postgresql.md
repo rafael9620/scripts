@@ -17,22 +17,46 @@ sudo su       # then introduce root password
 su postgres
 psql
 ```
+
 Login as sudo then login as PostgreSQL default user the access the RELP i one line.
 ```bash
 sudo -u postgres psql
 ```
 
+Login in the RELP directly using parameters.
 ```bash
 # host, port, user and password are required.
 # psql "host=<server> port=5432 dbname=<db> user=<user> password=<password>"
 psql "host=localhost port=5432 user=postgres password=postgres"
+```
 
-
+Login in the RELP directly using a url.
+```bash
 # psql postgresql://[user[:password]@][host][:port][,...][/dbname][?param1=value1&...]
 psql postgresql://postgres:postgres@localhost:5432
+```
 
+Login by setting the environment variable and using flags.
+```
 PGPASSWORD=postgres psql -h localhost -U postgres
 ```
+
+Login just setting environment varialbes.
+```bash
+export PGHOST=localhost
+export PGPORT=5432
+export PGUSER=postgres
+export PGPASSWORD=postgres
+export PGDATABASE=postgres
+psql
+```
+
+Login just setting environment varialbes in one line.
+```bash
+PGHOST=localhost PGPORT=5432 PGUSER=postgres PGPASSWORD=postgres PGDATABASE=postgres psql
+```
+
+
 
 ##### Configurar el usuario por defecto de postgresql
 ```bash
