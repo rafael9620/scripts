@@ -21,8 +21,10 @@ gsettings set org.gnome.Vino vnc-password $(echo -n "1qaz"|base64)
 # gsettings set org.gnome.desktop.lockdown disable-user-switching true
 # gsettings set org.gnome.desktop.lockdown disable-log-out true
 # gsettings set org.gnome.desktop.interface enable-animations false
-```
 
+# Init the server
+/usr/lib/vino/vino-server
+```
 
 Para usar esta configuración de «vino» remotamente:
 1. Instalar «remmina» `sudo apt-get install remmina`
@@ -31,13 +33,6 @@ Para usar esta configuración de «vino» remotamente:
     * **Server**: ***10.36.32.218:5910***
     * **Password**: ***1qaz***
     * Dejar el resto de las configuraciones por defecto.
-
-
-
-## Init the server
-```bash
-/usr/lib/vino/vino-server
-```
 
 
 ## Reset all configurations.
